@@ -5,3 +5,6 @@
 # typescript build
 dist
 tsconfig.tsbuildinfo
+
+# play testing code
+live-test
