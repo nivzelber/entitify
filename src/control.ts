@@ -1,29 +1,29 @@
 import { Router } from "express";
 import qs from "qs";
-import { EntityTarget, getConnection, getRepository, Like } from "typeorm";
+import { EntityTarget, Equal, getConnection, getRepository, Like } from "typeorm";
+
+import { getFieldsByType } from "./utils/decode-entity/get-fields-by-type";
+import { queryStringValueDecoder } from "./utils/query-string-value-decoder";
 
 export interface Options {
   take?: number;
 }
 
 const defaultOptions: Options = { take: 50 };
-const fieldTypeNameIndex = 9;
 
 export const control = <TEntity extends EntityTarget<any>>(
   entityClass: TEntity,
   options: Options = defaultOptions
 ) => {
-  const repository = getRepository(entityClass);
   options = { ...defaultOptions, ...options };
-  const { name: entityName, ownColumns } = getConnection().getMetadata(entityClass);
-  const router = Router();
 
-  const stringFields = ownColumns
-    .filter(({ type }) => {
-      const typeString = type.toString();
-      return typeString.slice(fieldTypeNameIndex, typeString.indexOf("(")) === "String";
-    })
-    .map(({ propertyName }) => propertyName);
+  const { name: entityName, ownColumns } = getConnection().getMetadata(entityClass);
+  const repository = getRepository(entityClass);
+
+  const stringFields = getFieldsByType(ownColumns, "String");
+  const numberFields = getFieldsByType(ownColumns, "Number");
+
+  const router = Router();
 
   router.get("/count", async (_req, res) => {
     try {
@@ -59,6 +59,12 @@ export const control = <TEntity extends EntityTarget<any>>(
           conditions.where.push({ [stringField]: Like("%" + req.query[stringField] + "%") });
         }
       });
+
+      numberFields.forEach(stringField => {
+        if (req.query[stringField]) {
+          conditions.where.push({ [stringField]: Equal(req.query[stringField]) });
+        }
+      });
       //#endregion find conditions
 
       //#region query string
@@ -67,23 +73,7 @@ export const control = <TEntity extends EntityTarget<any>>(
       const rawQueryString = req.url.slice(requestHasQueryString ? queryStringIndex + 1 : 0);
 
       const queryString = qs.parse(rawQueryString, {
-        decoder: value => {
-          if (/^(\d+|\d*\.\d+)$/.test(value)) {
-            return parseFloat(value);
-          }
-
-          let keywords = {
-            true: true,
-            false: false,
-            null: null,
-            undefined: undefined
-          };
-          if (value in keywords) {
-            return keywords[value];
-          }
-
-          return value;
-        },
+        decoder: queryStringValueDecoder,
         allowDots: true
       });
 
