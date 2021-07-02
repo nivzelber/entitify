@@ -1,9 +1,11 @@
 import { ParsedQs } from "qs";
 import { FindOperator } from "typeorm";
 
-import { getGeneralConditions } from "../utils/conditions/generalFields";
-import { getNumbersConditions } from "../utils/conditions/numberFields";
-import { getStringsConditions } from "../utils/conditions/stringFields";
+import {
+  getGeneralConditions,
+  getNumbersConditions,
+  getStringsConditions
+} from "../utils/conditions";
 
 interface GetWhereConditionsProps {
   query: ParsedQs;
