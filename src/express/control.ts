@@ -1,7 +1,8 @@
 import { Router } from "express";
 import qs from "qs";
-import { EntityTarget, Equal, getConnection, getRepository, Like } from "typeorm";
+import { EntityTarget, getConnection, getRepository } from "typeorm";
 
+import { getStringsConditions } from "../utils/conditions/stringFields";
 import { getFieldsByType } from "../utils/decode-entity/get-fields-by-type";
 import { queryStringValueDecoder } from "../utils/query-string-value-decoder";
 
@@ -11,7 +12,7 @@ export interface Options {
 
 const defaultOptions: Options = { take: 50 };
 
-export const control = <TEntity extends EntityTarget<any>>(
+export const control = <TEntity extends EntityTarget<{ id: number }>>(
   entityClass: TEntity,
   options: Options = defaultOptions
 ) => {
@@ -54,17 +55,8 @@ export const control = <TEntity extends EntityTarget<any>>(
         order: { id: "ASC" }
       };
 
-      stringFields.forEach(stringField => {
-        if (req.query[stringField]) {
-          conditions.where.push({ [stringField]: Like("%" + req.query[stringField] + "%") });
-        }
-      });
-
-      numberFields.forEach(stringField => {
-        if (req.query[stringField]) {
-          conditions.where.push({ [stringField]: Equal(req.query[stringField]) });
-        }
-      });
+      const stringConditions = getStringsConditions(stringFields, req.query);
+      conditions.where.push(...stringConditions); // using concat does not work here
       //#endregion find conditions
 
       //#region query string
