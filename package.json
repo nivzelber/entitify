@@ -5,12 +5,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build-prod": "tsc --build tsconfig.prod.json",
-    "build-dev": "tsc --build tsconfig.json",
+    "build-prod": "tsc --build tsconfig.json",
+    "build-dev": "tsc --build tsconfig.dev.json",
     "prepublish": "npm run build-prod",
     "dev": "npm run build-dev",
     "dev:watch": "nodemon",
-    "start": "node dist/live-test/index.js"
+    "start": "node dist/examples/index.js"
   },
   "keywords": [],
   "author": "",
