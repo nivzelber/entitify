@@ -2,8 +2,8 @@ import { Router } from "express";
 import qs from "qs";
 import { EntityTarget, Equal, getConnection, getRepository, Like } from "typeorm";
 
-import { getFieldsByType } from "./utils/decode-entity/get-fields-by-type";
-import { queryStringValueDecoder } from "./utils/query-string-value-decoder";
+import { getFieldsByType } from "../utils/decode-entity/get-fields-by-type";
+import { queryStringValueDecoder } from "../utils/query-string-value-decoder";
 
 export interface Options {
   take?: number;
