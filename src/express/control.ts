@@ -2,6 +2,8 @@ import { Router } from "express";
 import qs from "qs";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
+import { getGeneralConditions } from "../utils/conditions/generalFields";
+import { getNumbersConditions } from "../utils/conditions/numberFields";
 import { getStringsConditions } from "../utils/conditions/stringFields";
 import { getFieldsByType } from "../utils/decode-entity/get-fields-by-type";
 import { queryStringValueDecoder } from "../utils/query-string-value-decoder";
@@ -55,8 +57,15 @@ export const control = <TEntity extends EntityTarget<{ id: number }>>(
         order: { id: "ASC" }
       };
 
+      const allFields = ([] as string[]).concat(stringFields).concat(numberFields);
+      const generalConditions = getGeneralConditions(allFields, req.query);
+      conditions.where.push(...generalConditions); // using concat does not work here
+
       const stringConditions = getStringsConditions(stringFields, req.query);
-      conditions.where.push(...stringConditions); // using concat does not work here
+      conditions.where.push(...stringConditions);
+
+      const numberConditions = getNumbersConditions(numberFields, req.query);
+      conditions.where.push(...numberConditions);
       //#endregion find conditions
 
       //#region query string
