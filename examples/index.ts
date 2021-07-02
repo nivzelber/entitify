@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import { ConnectionOptions, createConnection } from "typeorm";
 
-import { control } from "../src/express";
+import { route } from "../src/express";
 
 import { User } from "./user.model";
 
@@ -29,7 +29,7 @@ const start = async () => {
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
 
-  const userController = control(User);
+  const userController = route(User);
   app.use("/api/user", userController);
 
   app.listen(3000, () => console.log("App in running"));

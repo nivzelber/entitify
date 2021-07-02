@@ -14,7 +14,7 @@ export interface Options {
 
 const defaultOptions: Options = { take: 50 };
 
-export const control = <TEntity extends EntityTarget<{ id: number }>>(
+export const route = <TEntity extends EntityTarget<{ id: number }>>(
   entityClass: TEntity,
   options: Options = defaultOptions
 ) => {
