@@ -1,12 +1,12 @@
 import { Router } from "express";
-import qs from "qs";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
 import { getGeneralConditions } from "../utils/conditions/generalFields";
 import { getNumbersConditions } from "../utils/conditions/numberFields";
 import { getStringsConditions } from "../utils/conditions/stringFields";
 import { getFieldsByType } from "../utils/decode-entity/get-fields-by-type";
-import { queryStringValueDecoder } from "../utils/query-string-value-decoder";
+
+import { getQueryString } from "./getQueryString";
 
 export interface Options {
   take?: number;
@@ -51,17 +51,12 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
 
   router.get("/", async (req, res) => {
     try {
-      //#region query string
-      const queryStringIndex = req.url.indexOf("?");
-      const requestHasQueryString = queryStringIndex !== -1;
-      const rawQueryString = req.url.slice(requestHasQueryString ? queryStringIndex + 1 : 0);
-
-      const queryString = qs.parse(rawQueryString, {
-        decoder: queryStringValueDecoder
-      });
-
-      const { take = options.take, skip = 0, paginate = true, _and = false } = queryString;
-      //#endregion query string
+      const {
+        take = options.take,
+        skip = 0,
+        paginate = true,
+        _and = false
+      } = getQueryString(req.url);
 
       //#region find conditions
       const conditions: any = {
