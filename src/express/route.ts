@@ -57,8 +57,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
       const rawQueryString = req.url.slice(requestHasQueryString ? queryStringIndex + 1 : 0);
 
       const queryString = qs.parse(rawQueryString, {
-        decoder: queryStringValueDecoder,
-        allowDots: true
+        decoder: queryStringValueDecoder
       });
 
       const { take = options.take, skip = 0, paginate = true, _and = false } = queryString;
