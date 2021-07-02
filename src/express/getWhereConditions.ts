@@ -11,6 +11,7 @@ interface GetWhereConditionsProps {
   query: ParsedQs;
   stringFields?: string[];
   numberFields?: string[];
+  booleanFields?: string[];
   and?: boolean;
 }
 
@@ -18,11 +19,15 @@ export const getWhereConditions = ({
   query,
   stringFields = [],
   numberFields = [],
+  booleanFields = [],
   and = false
 }: GetWhereConditionsProps) => {
   let conditions: Record<string, FindOperator<any>>[] = [];
 
-  const allFields = ([] as string[]).concat(stringFields).concat(numberFields);
+  const allFields = ([] as string[])
+    .concat(stringFields)
+    .concat(numberFields)
+    .concat(booleanFields);
   const generalConditions = getGeneralConditions(allFields, query);
   conditions.push(...generalConditions); // using concat does not work here
 

@@ -13,4 +13,7 @@ export class User {
 
   @Column()
   age: number;
+
+  @Column()
+  admin: boolean;
 }

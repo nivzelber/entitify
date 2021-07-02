@@ -1,6 +1,6 @@
 import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 
-type FieldType = "String" | "Number";
+type FieldType = "String" | "Number" | "Boolean";
 
 const fieldTypeNameIndex = 9;
 

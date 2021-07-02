@@ -23,6 +23,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
 
   const stringFields = getFieldsByType(ownColumns, "String");
   const numberFields = getFieldsByType(ownColumns, "Number");
+  const booleanFields = getFieldsByType(ownColumns, "Boolean");
 
   const router = Router();
 
@@ -61,6 +62,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
           query: req.query,
           stringFields,
           numberFields,
+          booleanFields,
           and: _and as boolean
         }),
         order: { id: "ASC" }
