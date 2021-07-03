@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
+import { getWhereConditions } from "../utils/conditions";
 import { getFieldsByType } from "../utils/decode-entity/get-fields-by-type";
 
 import { getQueryString } from "./getQueryString";
-import { getWhereConditions } from "./getWhereConditions";
 
 export interface Options {
   take?: number;
