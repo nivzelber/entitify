@@ -4,7 +4,7 @@ import { EntityTarget, getConnection, getRepository } from "typeorm";
 import { getWhereConditions } from "../utils/conditions";
 import { getFields } from "../utils/decode-entity/get-fields-by-type";
 
-import { getQueryString } from "./getQueryString";
+import { getQueryString } from "./get-query-string";
 
 export interface Options {
   take?: number;
