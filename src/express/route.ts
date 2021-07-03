@@ -51,7 +51,9 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
         take = options.take,
         skip = 0,
         paginate = true,
-        _and = false
+        _and = false,
+        _sort_by = "id",
+        _sort_direction = "ASC"
       } = getQueryString(req.url);
 
       const conditions: any = {
@@ -60,7 +62,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
           fields,
           and: _and as boolean
         }),
-        order: { id: "ASC" }
+        order: { [_sort_by as string]: (_sort_direction as string).toUpperCase() }
       };
 
       if (paginate) {
