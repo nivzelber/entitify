@@ -5,6 +5,7 @@ import { FieldNameTypeTuple, FieldType } from "../decode-entity/get-fields-by-ty
 import { pluck } from "../pluck";
 
 import { getGeneralConditions, getNumbersConditions, getStringsConditions } from "./";
+import { getDatesConditions } from "./date-fields";
 
 const getName = pluck("name");
 const typeEquals = (type: FieldType) => (field: { type: FieldType }) => field.type === type;
@@ -32,6 +33,9 @@ export const getWhereConditions = ({ query, fields, and = false }: GetWhereCondi
     query
   );
   conditions.push(...numberConditions);
+
+  const dateConditions = getDatesConditions(fields.filter(typeEquals("Date")).map(getName), query);
+  conditions.push(...dateConditions);
 
   // joining conditions in case and was supplied
   if (and && conditions.length > 0) {
