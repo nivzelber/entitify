@@ -2,7 +2,7 @@ import { Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
 import { getWhereConditions } from "../utils/conditions";
-import { getFieldsByType } from "../utils/decode-entity/get-fields-by-type";
+import { getFields } from "../utils/decode-entity/get-fields-by-type";
 
 import { getQueryString } from "./getQueryString";
 
@@ -19,13 +19,10 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
   options = { ...defaultOptions, ...options };
 
   const { name: entityName, ownColumns } = getConnection().getMetadata(entityClass);
-  const repository = getRepository(entityClass);
-
-  const stringFields = getFieldsByType(ownColumns, "String");
-  const numberFields = getFieldsByType(ownColumns, "Number");
-  const booleanFields = getFieldsByType(ownColumns, "Boolean");
+  const fields = getFields(ownColumns);
 
   const router = Router();
+  const repository = getRepository(entityClass);
 
   router.get("/count", async (_req, res) => {
     try {
@@ -60,9 +57,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
       const conditions: any = {
         where: getWhereConditions({
           query: req.query,
-          stringFields,
-          numberFields,
-          booleanFields,
+          fields,
           and: _and as boolean
         }),
         order: { id: "ASC" }

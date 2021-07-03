@@ -1,36 +1,36 @@
 import { ParsedQs } from "qs";
 import { FindOperator } from "typeorm";
 
+import { FieldNameTypeTuple, FieldType } from "../decode-entity/get-fields-by-type";
+import { pluck } from "../pluck";
+
 import { getGeneralConditions, getNumbersConditions, getStringsConditions } from "./";
+
+const getName = pluck("name");
+const typeEquals = (type: FieldType) => (field: { type: FieldType }) => field.type === type;
 
 export interface GetWhereConditionsProps {
   query: ParsedQs;
-  stringFields?: string[];
-  numberFields?: string[];
-  booleanFields?: string[];
+  fields: FieldNameTypeTuple[];
   and?: boolean;
 }
 
-export const getWhereConditions = ({
-  query,
-  stringFields = [],
-  numberFields = [],
-  booleanFields = [],
-  and = false
-}: GetWhereConditionsProps) => {
+export const getWhereConditions = ({ query, fields, and = false }: GetWhereConditionsProps) => {
   let conditions: Record<string, FindOperator<any>>[] = [];
 
-  const allFields = ([] as string[])
-    .concat(stringFields)
-    .concat(numberFields)
-    .concat(booleanFields);
-  const generalConditions = getGeneralConditions(allFields, query);
+  const generalConditions = getGeneralConditions(fields.map(getName), query);
   conditions.push(...generalConditions); // using concat does not work here
 
-  const stringConditions = getStringsConditions(stringFields, query);
+  const stringConditions = getStringsConditions(
+    fields.filter(typeEquals("String")).map(getName),
+    query
+  );
   conditions.push(...stringConditions);
 
-  const numberConditions = getNumbersConditions(numberFields, query);
+  const numberConditions = getNumbersConditions(
+    fields.filter(typeEquals("Number")).map(getName),
+    query
+  );
   conditions.push(...numberConditions);
 
   // joining conditions in case and was supplied
