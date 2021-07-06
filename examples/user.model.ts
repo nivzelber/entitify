@@ -1,4 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from "typeorm";
+
+import { Address } from "./address.model";
 
 @Entity()
 export class User {
@@ -19,4 +28,8 @@ export class User {
 
   @CreateDateColumn()
   registrationDate: boolean;
+
+  @OneToOne(type => Address, address => address.user, { eager: true, cascade: true })
+  @JoinColumn()
+  address: Address;
 }
