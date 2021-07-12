@@ -28,7 +28,8 @@
   },
   "peerDpendencies": {
     "typeorm": "^0.2.34",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "@nestjs/common": "^8.0.2"
   },
   "dependencies": {
     "qs": "^6.10.1"
