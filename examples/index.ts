@@ -29,8 +29,8 @@ const start = async () => {
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
 
-  const userController = route(User);
-  app.use("/api/user", userController);
+  const userRouter = route(User);
+  app.use("/api/user", userRouter);
 
   app.listen(3000, () => console.log("App in running"));
 };
