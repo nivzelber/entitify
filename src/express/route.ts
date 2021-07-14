@@ -1,16 +1,11 @@
 import { Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
+import { defaultOptions, Options } from "../common/options";
 import { getWhereConditions } from "../utils/conditions";
 import { getFields } from "../utils/decode-entity/get-fields-by-type";
 
 import { getQueryString } from "./get-query-string";
-
-export interface Options {
-  take?: number;
-}
-
-const defaultOptions: Options = { take: 50 };
 
 export const route = <TEntity extends EntityTarget<{ id: number }>>(
   entityClass: TEntity,
