@@ -82,7 +82,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
     }
   });
 
-  router.put("/:id", async (req, res) => {
+  router.patch("/:id", async (req, res) => {
     const { id } = req.params;
     try {
       let entity = await repository.findOneOrFail(id);
