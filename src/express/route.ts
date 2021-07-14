@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
 import { defaultOptions, Options } from "../common/options";
@@ -7,7 +7,13 @@ import { getFields } from "../utils/decode-entity/get-fields-by-type";
 
 import { getQueryString } from "./get-query-string";
 
-export const route = <TEntity extends EntityTarget<{ id: number }>>(
+export const route = <
+  TEntity extends EntityTarget<{
+    id: number;
+  }>,
+  TCreateEntity = Omit<TEntity, "id">,
+  TUpdateEntity = Partial<TCreateEntity>
+>(
   entityClass: TEntity,
   options: Options = defaultOptions
 ) => {
@@ -72,7 +78,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
     }
   });
 
-  router.post("/", async (req, res) => {
+  router.post("/", async (req: Request<{}, {}, { entity: TCreateEntity }>, res) => {
     try {
       const entity = repository.create(req.body.entity);
       const entityFromDB = await repository.save(entity);
@@ -82,7 +88,7 @@ export const route = <TEntity extends EntityTarget<{ id: number }>>(
     }
   });
 
-  router.patch("/:id", async (req, res) => {
+  router.patch("/:id", async (req: Request<{ id: number }, {}, { entity: TUpdateEntity }>, res) => {
     const { id } = req.params;
     try {
       let entity = await repository.findOneOrFail(id);
