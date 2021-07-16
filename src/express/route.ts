@@ -4,6 +4,7 @@ import { EntityTarget, getConnection, getRepository } from "typeorm";
 import { defaultOptions, Options } from "../common/options";
 import { getWhereConditions } from "../utils/conditions";
 import { getFields } from "../utils/decode-entity/get-fields-by-type";
+import { parseQuery } from "../utils/query-string/parse-query";
 
 import { getQueryString } from "./get-query-string";
 
@@ -48,6 +49,8 @@ export const route = <
 
   router.get("/", async (req, res) => {
     try {
+      const queryString = getQueryString(req.url);
+
       const {
         take = options.take,
         skip = 0,
@@ -55,7 +58,7 @@ export const route = <
         _and = false,
         _sort_by = "id",
         _sort_direction = "ASC"
-      } = getQueryString(req.url);
+      } = parseQuery(queryString);
 
       const conditions: any = {
         where: getWhereConditions({
