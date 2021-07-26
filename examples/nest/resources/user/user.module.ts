@@ -1,8 +1,7 @@
 import { Module } from "@nestjs/common";
 import { RouterModule } from "nest-router";
 
-import { GeneralController } from "../../../../src/nest/general/general.controller";
-import { GeneralService } from "../../../../src/nest/general/general.service";
+import { GeneralController, GeneralService } from "../../../../src/nest/";
 import { User } from "../../../user.model";
 
 @Module({

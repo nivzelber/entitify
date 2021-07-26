@@ -12,9 +12,10 @@ import { UpdateGeneralDto } from "./dto/update-general.dto";
 @Injectable()
 export class GeneralService {
   entityClass: EntitySchema<BaseEntity>;
+
+  repository: Repository<BaseEntity>;
   name: string;
   fields: FieldNameTypeTuple[];
-  repository: Repository<BaseEntity>;
 
   constructor(@Inject("entityClass") entityClass: EntitySchema<BaseEntity>) {
     this.entityClass = entityClass;
@@ -22,8 +23,9 @@ export class GeneralService {
 
   initRepository() {
     if (!this.repository) {
-      this.repository = getConnection().getRepository(this.entityClass);
-      const { name, ownColumns } = getConnection().getMetadata(this.entityClass);
+      const connection = getConnection();
+      this.repository = connection.getRepository(this.entityClass);
+      const { name, ownColumns } = connection.getMetadata(this.entityClass);
       this.name = name;
       this.fields = getFields(ownColumns);
     }

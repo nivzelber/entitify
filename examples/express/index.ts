@@ -14,6 +14,7 @@ const start = async () => {
     username: "Niv54",
     password: "myCoolDbPassword123",
     entities: ["dist/examples/**/*.model.js"],
+    // next values are optional
     synchronize: true,
     logging: true,
     logger: "advanced-console",
