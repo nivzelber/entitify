@@ -2,9 +2,12 @@
 .vscode
 .idea
 
-# typescript build
-dist
-tsconfig.tsbuildinfo
+# source
+src
+examples
 
-# play testing code
-live-test
+# configuration
+.gitignore
+nodemon.json
+package-lock.json
+tsconfig.*
