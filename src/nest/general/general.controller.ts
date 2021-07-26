@@ -8,10 +8,10 @@ import { GeneralService } from "./general.service";
 
 @Controller()
 export class GeneralController {
-  constructor(private readonly generalService: GeneralService<any>) {}
+  constructor(private readonly generalService: GeneralService) {}
 
   @Post()
-  create(@Body() createGeneralDto: CreateGeneralDto<any>) {
+  create(@Body() createGeneralDto: CreateGeneralDto<BaseEntity>) {
     return this.generalService.create(createGeneralDto.entity);
   }
 

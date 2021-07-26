@@ -6,18 +6,17 @@ import { defaultOptions } from "../../common/options";
 import { getWhereConditions } from "../../utils/conditions";
 import { FieldNameTypeTuple, getFields } from "../../utils/decode-entity/get-fields-by-type";
 
+import { CreateGeneralDto } from "./dto/create-general.dto";
+import { UpdateGeneralDto } from "./dto/update-general.dto";
+
 @Injectable()
-export class GeneralService<
-  TEntity extends EntitySchema<BaseEntity>
-> /*implements Service<TEntity, TCreateEntity, TUpdateEntity> */ {
+export class GeneralService {
   entityClass: EntitySchema<BaseEntity>;
   name: string;
   fields: FieldNameTypeTuple[];
   repository: Repository<BaseEntity>;
-  constructor(
-    @Inject("entityClass") entityClass: EntitySchema<BaseEntity>
-    // @InjectRepository(User) private asd: Repository<User>
-  ) {
+
+  constructor(@Inject("entityClass") entityClass: EntitySchema<BaseEntity>) {
     this.entityClass = entityClass;
   }
 
@@ -81,8 +80,7 @@ export class GeneralService<
     return { entities, total };
   }
 
-  // async create(entity: TCreateEntity) {
-  async create(entity: any) {
+  async create(entity: CreateGeneralDto<BaseEntity>["entity"]) {
     this.initRepository();
     try {
       const createdEntity = this.repository.create(entity);
@@ -93,8 +91,7 @@ export class GeneralService<
     }
   }
 
-  // async update(id: number, partialEntity: TUpdateEntity) {
-  async update(id: number, partialEntity: any) {
+  async update(id: number, partialEntity: UpdateGeneralDto["entity"]) {
     this.initRepository();
     try {
       let entity = await this.repository.findOneOrFail(id);
@@ -123,7 +120,3 @@ export class GeneralService<
     }
   }
 }
-
-/*
-  return GeneralService as any;
-};*/
