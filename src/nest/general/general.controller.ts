@@ -1,34 +1,56 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { GeneralService } from './general.service';
-import { CreateGeneralDto } from './dto/create-general.dto';
-import { UpdateGeneralDto } from './dto/update-general.dto';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
 
-@Controller('general')
+import { parseQuery } from "../../utils/query-string/parse-query";
+
+import { GeneralService } from "./general.service";
+
+/*export const getController = <
+  TEntity extends EntitySchema<{
+    id: number;
+  }>,
+  TCreateEntity,
+  TUpdateEntity = Partial<TCreateEntity>
+>(
+  entityClass: TEntity,
+  generalService: Service<TEntity, TCreateEntity, TUpdateEntity>
+): ControllerType<TCreateEntity, TUpdateEntity> => {*/
+@Controller("user")
 export class GeneralController {
-  constructor(private readonly generalService: GeneralService) {}
+  constructor(private readonly generalService: GeneralService<any>) {}
 
   @Post()
-  create(@Body() createGeneralDto: CreateGeneralDto) {
-    return this.generalService.create(createGeneralDto);
+  // create(@Body() createGeneralDto: TCreateEntity) {
+  create(@Body() createGeneralDto: any) {
+    return this.generalService.create(createGeneralDto.entity);
   }
 
-  @Get()
-  findAll() {
-    return this.generalService.findAll();
+  @Get("count")
+  count() {
+    return this.generalService.count();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  findOne(@Param("id") id: string) {
     return this.generalService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGeneralDto: UpdateGeneralDto) {
-    return this.generalService.update(+id, updateGeneralDto);
+  @Get()
+  findByCondition(@Query() query: Record<string, string>) {
+    return this.generalService.findByCondition(parseQuery(query));
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Patch(":id")
+  // update(@Param("id") id: string, @Body() updateGeneralDto: TUpdateEntity) {
+  update(@Param("id") id: string, @Body() updateGeneralDto: any) {
+    return this.generalService.update(+id, updateGeneralDto.entity);
+  }
+
+  @Delete(":id")
+  remove(@Param("id") id: string) {
     return this.generalService.remove(+id);
   }
 }
+/*
+  return GeneralController as any;
+};
+*/

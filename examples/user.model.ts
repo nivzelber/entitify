@@ -9,7 +9,7 @@ import {
 
 import { Address } from "./address.model";
 
-@Entity()
+@Entity({ name: "User" })
 export class User {
   @PrimaryGeneratedColumn()
   id: number;

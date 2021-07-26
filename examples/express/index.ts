@@ -2,9 +2,8 @@ import cors from "cors";
 import express from "express";
 import { ConnectionOptions, createConnection } from "typeorm";
 
-import { route } from "../src/express";
-
-import { User } from "./user.model";
+import { route } from "../../src/express";
+import { User } from "../user.model";
 
 const start = async () => {
   const connectionOptions: ConnectionOptions = {
