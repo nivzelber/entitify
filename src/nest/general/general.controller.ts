@@ -2,6 +2,8 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestj
 
 import { parseQuery } from "../../utils/query-string/parse-query";
 
+import { CreateGeneralDto } from "./dto/create-general.dto";
+import { UpdateGeneralDto } from "./dto/update-general.dto";
 import { GeneralService } from "./general.service";
 
 @Controller("user")
@@ -9,8 +11,7 @@ export class GeneralController {
   constructor(private readonly generalService: GeneralService<any>) {}
 
   @Post()
-  // create(@Body() createGeneralDto: TCreateEntity) {
-  create(@Body() createGeneralDto: any) {
+  create(@Body() createGeneralDto: CreateGeneralDto<any>) {
     return this.generalService.create(createGeneralDto.entity);
   }
 
@@ -30,8 +31,7 @@ export class GeneralController {
   }
 
   @Patch(":id")
-  // update(@Param("id") id: string, @Body() updateGeneralDto: TUpdateEntity) {
-  update(@Param("id") id: string, @Body() updateGeneralDto: any) {
+  update(@Param("id") id: string, @Body() updateGeneralDto: UpdateGeneralDto) {
     return this.generalService.update(+id, updateGeneralDto.entity);
   }
 
