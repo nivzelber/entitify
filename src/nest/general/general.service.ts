@@ -2,7 +2,6 @@ import { Inject, Injectable } from "@nestjs/common";
 import { ParsedQs } from "qs";
 import { EntitySchema, getConnection, Repository } from "typeorm";
 
-import { User } from "../../../examples/user.model";
 import { defaultOptions } from "../../common/options";
 import { getWhereConditions } from "../../utils/conditions";
 import { FieldNameTypeTuple, getFields } from "../../utils/decode-entity/get-fields-by-type";
@@ -14,7 +13,7 @@ export class GeneralService<
   entityClass: EntitySchema<BaseEntity>;
   name: string;
   fields: FieldNameTypeTuple[];
-  repository: Repository<TEntity>;
+  repository: Repository<BaseEntity>;
   constructor(
     @Inject("entityClass") entityClass: EntitySchema<BaseEntity>
     // @InjectRepository(User) private asd: Repository<User>
@@ -24,7 +23,7 @@ export class GeneralService<
 
   initRepository() {
     if (!this.repository) {
-      this.repository = getConnection().getRepository(User) as any;
+      this.repository = getConnection().getRepository(this.entityClass);
       const { name, ownColumns } = getConnection().getMetadata(this.entityClass);
       this.name = name;
       this.fields = getFields(ownColumns);
