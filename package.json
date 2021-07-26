@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build-prod": "rimraf dist && tsc --build tsconfig.build.json",
-    "build-dev": "tsc --build tsconfig.json",
-    "prepare": "npm run build-prod",
-    "dev": "npm run build-dev",
+    "build:prod": "rimraf dist && tsc --build tsconfig.build.json",
+    "build:dev": "tsc --build tsconfig.json",
+    "prepare": "npm run build:prod",
+    "dev": "npm run build:dev",
     "dev:watch": "nodemon",
     "start": "node dist/examples/nest/main.js"
   },
