@@ -5,6 +5,7 @@ import { EntitySchema, getConnection, Repository } from "typeorm";
 import { defaultOptions } from "../../common/options";
 import { getWhereConditions } from "../../utils/conditions";
 import { FieldNameTypeTuple, getFields } from "../../utils/decode-entity/get-fields-by-type";
+import { BaseEntity } from "../../utils/types/base-entity.type";
 
 import { CreateGeneralDto } from "./dto/create-general.dto";
 import { UpdateGeneralDto } from "./dto/update-general.dto";

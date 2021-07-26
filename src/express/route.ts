@@ -5,6 +5,7 @@ import { defaultOptions, Options } from "../common/options";
 import { getWhereConditions } from "../utils/conditions";
 import { getFields } from "../utils/decode-entity/get-fields-by-type";
 import { parseQuery } from "../utils/query-string/parse-query";
+import { BaseEntity } from "../utils/types/base-entity.type";
 
 import { getQueryString } from "./get-query-string";
 

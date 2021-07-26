@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
 
 import { parseQuery } from "../../utils/query-string/parse-query";
+import { BaseEntity } from "../../utils/types/base-entity.type";
 
 import { CreateGeneralDto } from "./dto/create-general.dto";
 import { UpdateGeneralDto } from "./dto/update-general.dto";
