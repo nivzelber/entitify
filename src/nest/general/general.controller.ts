@@ -6,7 +6,7 @@ import { CreateGeneralDto } from "./dto/create-general.dto";
 import { UpdateGeneralDto } from "./dto/update-general.dto";
 import { GeneralService } from "./general.service";
 
-@Controller("user")
+@Controller()
 export class GeneralController {
   constructor(private readonly generalService: GeneralService<any>) {}
 

@@ -29,6 +29,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mssql": "^7.0.0",
+    "nest-router": "^1.0.9",
     "nodemon": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
