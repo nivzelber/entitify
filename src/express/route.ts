@@ -9,9 +9,7 @@ import { parseQuery } from "../utils/query-string/parse-query";
 import { getQueryString } from "./get-query-string";
 
 export const route = <
-  TEntity extends EntityTarget<{
-    id: number;
-  }>,
+  TEntity extends EntityTarget<BaseEntity>,
   TCreateEntity = Omit<TEntity, "id">,
   TUpdateEntity = Partial<TCreateEntity>
 >(

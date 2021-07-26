@@ -7,31 +7,16 @@ import { defaultOptions } from "../../common/options";
 import { getWhereConditions } from "../../utils/conditions";
 import { FieldNameTypeTuple, getFields } from "../../utils/decode-entity/get-fields-by-type";
 
-/*export const getService = <
-  TEntity extends EntitySchema<{
-    id: number;
-  }>,
-  TCreateEntity,
-  TUpdateEntity = Partial<TCreateEntity>
->(
-  entityClass: TEntity,
-  // repository: Repository<{ id: number }>,
-  // entityName: string,
-  options: Options
-  // fields: FieldNameTypeTuple[]
-): Service<TEntity, TCreateEntity, TUpdateEntity> => {*/
 @Injectable()
 export class GeneralService<
-  TEntity extends EntitySchema<{
-    id: number;
-  }>
+  TEntity extends EntitySchema<BaseEntity>
 > /*implements Service<TEntity, TCreateEntity, TUpdateEntity> */ {
-  entityClass: EntitySchema<{ id: number }>;
+  entityClass: EntitySchema<BaseEntity>;
   name: string;
   fields: FieldNameTypeTuple[];
   repository: Repository<TEntity>;
   constructor(
-    @Inject("entityClass") entityClass: EntitySchema<{ id: number }>
+    @Inject("entityClass") entityClass: EntitySchema<BaseEntity>
     // @InjectRepository(User) private asd: Repository<User>
   ) {
     this.entityClass = entityClass;

@@ -4,16 +4,6 @@ import { parseQuery } from "../../utils/query-string/parse-query";
 
 import { GeneralService } from "./general.service";
 
-/*export const getController = <
-  TEntity extends EntitySchema<{
-    id: number;
-  }>,
-  TCreateEntity,
-  TUpdateEntity = Partial<TCreateEntity>
->(
-  entityClass: TEntity,
-  generalService: Service<TEntity, TCreateEntity, TUpdateEntity>
-): ControllerType<TCreateEntity, TUpdateEntity> => {*/
 @Controller("user")
 export class GeneralController {
   constructor(private readonly generalService: GeneralService<any>) {}
@@ -50,7 +40,3 @@ export class GeneralController {
     return this.generalService.remove(+id);
   }
 }
-/*
-  return GeneralController as any;
-};
-*/
