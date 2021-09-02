@@ -1,4 +1,4 @@
 export * from "./get-where-conditions";
-export * from "./general-fields";
-export * from "./string-fields";
-export * from "./number-fields";
+export * from "./condition-getters/general-fields";
+export * from "./condition-getters/string-fields";
+export * from "./condition-getters/number-fields";

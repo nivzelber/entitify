@@ -5,7 +5,7 @@ import { FieldNameTypeTuple, FieldType } from "../decode-entity/get-fields-by-ty
 import { pluck } from "../pluck";
 
 import { getGeneralConditions, getNumbersConditions, getStringsConditions } from "./";
-import { getDatesConditions } from "./date-fields";
+import { getDatesConditions } from "./condition-getters/date-fields";
 
 const getName = pluck("name");
 const typeEquals = (type: FieldType) => (field: { type: FieldType }) => field.type === type;
