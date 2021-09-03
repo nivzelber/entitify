@@ -1,13 +1,13 @@
 import { ParsedQs } from "qs";
 import { FindOperator } from "typeorm";
 
-import { FieldNameTypeTuple, FieldType } from "../decode-entity/get-fields-by-type";
 import { pluck } from "../pluck";
+import { Field, FieldNameTypeTuple } from "../types/field.type";
 
 import { getGeneralConditions, getNumbersAndDatesConditions, getStringsConditions } from "./";
 
 const getName = pluck("name");
-const typeEquals = (type: FieldType) => (field: { type: FieldType }) => field.type === type;
+const typeEquals = (type: Field) => (field: { type: Field }) => field.type === type;
 
 export interface GetWhereConditionsProps {
   query: ParsedQs;

@@ -1,14 +1,9 @@
 import { ColumnMetadata } from "typeorm/metadata/ColumnMetadata";
 
+import { Field, FieldNameTypeTuple } from "../types/field.type";
 import { nullGuard } from "../types/null-guard";
 
 const typeNameIndex = 9; // match syntax of `function Type()`
-
-export type FieldType = "String" | "Number" | "Boolean" | "Date";
-export interface FieldNameTypeTuple {
-  name: string;
-  type: FieldType;
-}
 
 /**
  * get all model fields by type
@@ -38,10 +33,7 @@ export const getFields = (columnMetadata: ColumnMetadata[]): FieldNameTypeTuple[
       if (["datetime", "datetime2"].includes(typeString)) {
         return { name: propertyName, type: "Date" };
       } else {
-        const typeFromFunction = typeString.slice(
-          typeNameIndex,
-          typeString.indexOf("(")
-        ) as FieldType;
+        const typeFromFunction = typeString.slice(typeNameIndex, typeString.indexOf("(")) as Field;
         if (["String", "Number", "Boolean"].includes(typeFromFunction)) {
           return { name: propertyName, type: typeFromFunction };
         }
