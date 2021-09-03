@@ -10,6 +10,27 @@ export interface FieldNameTypeTuple {
   type: FieldType;
 }
 
+/**
+ * get all model fields by type
+ * @param columnMetadata model ownColumns
+ * @returns array of objects that map a field name to it's type
+ * @example
+ * Entity()
+ * class User {
+ *  Field()
+ *  age: number;
+ *
+ *  Field()
+ *  name: string;
+ * }
+ * const { ownColumns } = getConnection().getMetadata(User)
+ * getFields(ownColumns) // returns:
+ * // [
+ * //  { name: "age", type: "Number"},
+ * //  { name: "name", type: "String"},
+ * // ]
+ *
+ */
 export const getFields = (columnMetadata: ColumnMetadata[]): FieldNameTypeTuple[] => {
   return columnMetadata
     .map(({ propertyName, type }): FieldNameTypeTuple | undefined => {
