@@ -8,16 +8,9 @@
     "type": "git",
     "url": "https://github.com/niv54/entitify"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "keywords": [],
   "scripts": {
-    "build:prod": "rimraf dist && tsc --build tsconfig.build.json",
-    "build:dev": "tsc --build tsconfig.json",
-    "prepare": "npm run build:prod",
-    "dev": "npm run build:dev",
-    "dev:watch": "nodemon",
-    "start": "node dist/examples/nest/main.js"
+    "publish": "lerna publish"
   },
   "dependencies": {
     "qs": "^6.10.1"
@@ -44,13 +37,5 @@
     "rxjs": "^7.2.0",
     "typeorm": "^0.2.34",
     "typescript": "^4.3.4"
-  },
-  "peerDependencies": {
-    "@nestjs/mapped-types": "*",
-    "typeorm": "^0.2.34",
-    "express": "^4.17.1",
-    "@nestjs/common": "^8.0.4",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
   }
 }
