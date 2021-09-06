@@ -1,13 +1,11 @@
-# editors
-.vscode
-.idea
-
 # source
-src
-examples
+**/*.ts
+*.ts
+
+# definitions
+!**/*.d.ts
+!*.d.ts
 
 # configuration
-.gitignore
-nodemon.json
 package-lock.json
-tsconfig.*
+tsconfig.json
