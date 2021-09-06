@@ -39,20 +39,22 @@ export const getWhereConditions = ({ query, fields, and = false }: GetWhereCondi
   );
   conditions.push(...dateConditions);
 
-  // joining conditions in case and was supplied
+  // joining conditions in case and was supplied.
+  // for further understanding of this section read about
+  // where conditions in typeorm.
   if (and && conditions.length > 0) {
-    const andConditions: Record<string, FindOperator<any>>[] = [conditions[0]];
-    for (let i = 1; i < conditions.length; i++) {
-      const currentCondition = conditions[i];
-      const fieldName = Object.keys(currentCondition)[0];
-      if (andConditions[0].hasOwnProperty(fieldName)) {
-        andConditions.push(currentCondition);
-      } else {
-        andConditions[0][fieldName] = currentCondition[fieldName];
-      }
-    }
-
-    conditions = andConditions;
+    return conditions.slice(1).reduce(
+      (accumulator, currentCondition) => {
+        const fieldName = Object.keys(currentCondition)[0];
+        if (accumulator[0].hasOwnProperty(fieldName)) {
+          accumulator.push(currentCondition);
+        } else {
+          accumulator[0][fieldName] = currentCondition[fieldName];
+        }
+        return accumulator;
+      },
+      [conditions[0]]
+    );
   }
 
   return conditions;
