@@ -50,7 +50,7 @@ export class GeneralService {
       return entity;
     } catch (err) {
       const error = new Error(`No ${this.name} found with id: ${id}`);
-      error.stack = err.stack + "/n" + error.stack;
+      error.stack = (err as Error).stack + "/n" + error.stack;
       throw error;
     }
   }
@@ -88,7 +88,7 @@ export class GeneralService {
     this.initRepository();
     try {
       const createdEntity = this.repository.create(entity);
-      const entityFromDB = await this.repository.save(createdEntity as any);
+      const entityFromDB = await this.repository.save(createdEntity);
       return entityFromDB;
     } catch (error) {
       throw error;
@@ -103,11 +103,11 @@ export class GeneralService {
         ...entity,
         ...partialEntity
       };
-      const entityFromDB = await this.repository.save(entity as any);
+      const entityFromDB = await this.repository.save(entity);
       return entityFromDB;
     } catch (err) {
       const error = new Error(`No ${this.name} found with id: ${id}`);
-      error.stack = err.stack + "/n" + error.stack;
+      error.stack = (err as Error).stack + "/n" + error.stack;
       throw error;
     }
   }
@@ -119,7 +119,7 @@ export class GeneralService {
       return true;
     } catch (err) {
       const error = new Error(`No ${this.name} found with id: ${id}`);
-      error.stack = err.stack + "/n" + error.stack;
+      error.stack = (err as Error).stack + "/n" + error.stack;
       throw error;
     }
   }

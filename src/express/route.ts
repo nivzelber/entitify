@@ -41,7 +41,7 @@ export const route = <
       res.status(200).json(entity);
     } catch (err) {
       const error = new Error(`No ${entityName} found with id: ${id}`);
-      error.stack = err.stack + "/n" + error.stack;
+      error.stack = (err as Error).stack + "/n" + error.stack;
       throw error;
     }
   });
@@ -102,7 +102,7 @@ export const route = <
       res.status(200).json({ entity: entityFromDB });
     } catch (err) {
       const error = new Error(`No ${entityName} found with id: ${id}`);
-      error.stack = err.stack + "/n" + error.stack;
+      error.stack = (err as Error).stack + "/n" + error.stack;
       throw error;
     }
   });
@@ -114,7 +114,7 @@ export const route = <
       res.sendStatus(200);
     } catch (err) {
       const error = new Error(`No ${entityName} found with id: ${id}`);
-      error.stack = err.stack + "/n" + error.stack;
+      error.stack = (err as Error).stack + "/n" + error.stack;
       throw error;
     }
   });
