@@ -1,0 +1,30 @@
+{
+  "name": "@entitify/nest-rest",
+  "version": "0.0.1",
+  "description": "blazing fast API creation (@nest-rest)",
+  "author": "Niv Zelber",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niv54/entitify"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build:prod": "rimraf dist && tsc",
+    "prepack": "npm run build:prod"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "peerDependencies": {
+    "@entitify/common": "0.0.4",
+    "@entitify/core": "0.0.5",
+    "@nestjs/common": "^8.0.6",
+    "@nestjs/mapped-types": "^1.0.0",
+    "@nestjs/testing": "^8.0.6"
+  }
+}
