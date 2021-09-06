@@ -8,9 +8,9 @@
     "type": "git",
     "url": "https://github.com/niv54/entitify"
   },
-  "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [],
   "scripts": {
     "build:prod": "rimraf dist && tsc --build tsconfig.build.json",
     "build:dev": "tsc --build tsconfig.json",
@@ -32,7 +32,7 @@
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.12",
     "@types/jest": "^26.0.24",
-    "@types/qs": "^6.9.6",
+    "@types/qs": "^6.9.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "lerna": "^4.0.0",
