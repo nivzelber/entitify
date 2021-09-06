@@ -1,0 +1,24 @@
+{
+  "name": "@entitify/express",
+  "version": "0.0.3",
+  "description": "blazing fast API creation (@common)",
+  "author": "Niv Zelber",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niv54/entitify"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build:prod": "rimraf dist && tsc",
+    "prepare": "npm run build:prod"
+  },
+  "devDependencies": {
+    "@entitify/common": "0.0.3",
+    "rimraf": "^3.0.2"
+  }
+}
