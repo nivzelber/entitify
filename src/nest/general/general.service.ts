@@ -17,6 +17,7 @@ export class GeneralService {
   entityClass: EntitySchema<BaseEntity>;
   options: Options;
 
+  repositoryInitialized: boolean;
   repository: Repository<BaseEntity>;
   name: string;
   fields: FieldNameTypeTuple[];
@@ -25,12 +26,14 @@ export class GeneralService {
     @Inject(Tokens.EntityClass) entityClass: EntitySchema<BaseEntity>,
     @Optional() @Inject(Tokens.Options) options: Options = {}
   ) {
+    this.repositoryInitialized = false;
     this.entityClass = entityClass;
     this.options = { ...defaultOptions, ...options };
   }
 
   initRepository() {
-    if (!this.repository) {
+    if (!this.repositoryInitialized) {
+      this.repositoryInitialized = true;
       const connection = getConnection();
       this.repository = connection.getRepository(this.entityClass);
       const { name, ownColumns } = connection.getMetadata(this.entityClass);
