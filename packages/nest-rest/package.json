@@ -18,13 +18,18 @@
     "prepack": "npm run build:prod"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "@entitify/common": "0.0.4",
+    "@entitify/core": "0.0.5",
+    "@nestjs/common": "^8.0.6",
+    "@nestjs/mapped-types": "^1.0.0",
+    "@nestjs/testing": "^8.0.6"
   },
   "peerDependencies": {
     "@entitify/common": "0.0.4",
     "@entitify/core": "0.0.5",
     "@nestjs/common": "^8.0.6",
-    "@nestjs/mapped-types": "^1.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/testing": "^8.0.6"
   }
 }

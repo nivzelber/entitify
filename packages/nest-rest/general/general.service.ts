@@ -1,12 +1,8 @@
+import { defaultOptions, Options } from "@entitify/common";
+import { BaseEntity, FieldNameTypeTuple, getFields, getWhereConditions } from "@entitify/core";
 import { Inject, Injectable, Optional } from "@nestjs/common";
 import { ParsedQs } from "qs";
 import { EntitySchema, getConnection, Repository } from "typeorm";
-
-import { getWhereConditions } from "../../utils/conditions";
-import { getFields } from "../../utils/decode-entity/get-fields-by-type";
-import { defaultOptions, Options } from "../../utils/options";
-import { BaseEntity } from "../../utils/types/base-entity.type";
-import { FieldNameTypeTuple } from "../../utils/types/field.type";
 
 import { Tokens } from "./constants";
 import { CreateGeneralDto } from "./dto/create-general.dto";
