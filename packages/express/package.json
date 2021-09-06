@@ -18,12 +18,12 @@
     "prepack": "npm run build:prod"
   },
   "devDependencies": {
-    "@entitify/common": "0.0.4",
-    "@entitify/core": "0.0.5",
     "rimraf": "^3.0.2"
   },
   "peerDependencies": {
     "@entitify/common": "0.0.4",
-    "@entitify/core": "0.0.5"
+    "@entitify/core": "0.0.5",
+    "express": "^4.17.1",
+    "typeorm": "^0.2.37"
   }
 }
