@@ -13,21 +13,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build:prod": "rimraf dist && tsc",
-    "prepack": "npm run build:prod"
-  },
   "devDependencies": {
-    "@entitify/common": "^0.0.8",
-    "@entitify/core": "^0.0.8",
-    "@nestjs/common": "^8.0.6",
-    "@nestjs/mapped-types": "^1.0.0",
-    "@nestjs/testing": "^8.0.6",
-    "rimraf": "^3.0.2"
+    "@entitify/common": "0.0.8",
+    "@entitify/core": "0.0.8"
   },
   "peerDependencies": {
-    "@entitify/common": "0.0.4",
-    "@entitify/core": "0.0.5",
+    "@entitify/common": "0.0.8",
+    "@entitify/core": "0.0.8",
     "@nestjs/common": "^8.0.6",
     "@nestjs/mapped-types": "*",
     "@nestjs/testing": "^8.0.6"

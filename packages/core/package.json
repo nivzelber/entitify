@@ -13,13 +13,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build:prod": "rimraf dist && tsc",
-    "prepare": "npm run build:prod"
-  },
-  "devDependencies": {
-    "rimraf": "^3.0.2"
-  },
   "dependencies": {
     "qs": "^6.10.1"
   }

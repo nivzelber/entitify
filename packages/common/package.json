@@ -12,12 +12,5 @@
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build:prod": "rimraf dist && tsc",
-    "prepare": "npm run build:prod"
-  },
-  "devDependencies": {
-    "rimraf": "^3.0.2"
   }
 }

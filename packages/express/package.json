@@ -13,16 +13,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build:prod": "rimraf dist && tsc",
-    "prepack": "npm run build:prod"
-  },
   "devDependencies": {
-    "rimraf": "^3.0.2"
+    "@entitify/common": "0.0.8",
+    "@entitify/core": "0.0.8"
   },
   "peerDependencies": {
-    "@entitify/common": "0.0.4",
-    "@entitify/core": "0.0.5",
+    "@entitify/common": "0.0.8",
+    "@entitify/core": "0.0.8",
     "express": "^4.17.1",
     "typeorm": "^0.2.37"
   }
