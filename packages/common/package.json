@@ -1,0 +1,10 @@
+{
+  "name": "@entitify/common",
+  "version": "0.0.1",
+  "description": "blazing fast API creation (@common)",
+  "author": "Niv Zelber",
+  "license": "GPL-3.0-or-later",
+  "publishConfig": {
+    "access": "public"
+  }
+}
