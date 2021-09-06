@@ -1,6 +1,6 @@
 {
   "name": "@entitify/core",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "blazing fast API creation (@core)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",

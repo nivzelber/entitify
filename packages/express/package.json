@@ -1,6 +1,6 @@
 {
   "name": "@entitify/express",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "blazing fast API creation (@express)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",
@@ -12,8 +12,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@entitify/common": "0.0.8",
-    "@entitify/core": "0.0.8"
+    "@entitify/common": "^0.0.9",
+    "@entitify/core": "^0.0.9"
   },
   "peerDependencies": {
     "@entitify/common": "0.0.8",
