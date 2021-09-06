@@ -1,9 +1,10 @@
+import { route } from "@entitify/express";
 import cors from "cors";
 import express from "express";
 import { ConnectionOptions, createConnection } from "typeorm";
 
-import { route } from "../../src/express";
-import { User } from "../user.model";
+import { Address } from "../../models/address.model";
+import { User } from "../../models/user.model";
 
 const start = async () => {
   const connectionOptions: ConnectionOptions = {
@@ -13,7 +14,7 @@ const start = async () => {
     database: "entitify",
     username: "Niv54",
     password: "myCoolDbPassword123",
-    entities: ["dist/examples/**/*.model.js"],
+    entities: [User, Address],
     // next values are optional
     synchronize: true,
     logging: true,
