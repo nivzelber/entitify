@@ -1,10 +1,27 @@
-# npm
-node_modules
-
-# editors
+# IDE
 .vscode
 .idea
 
 # typescript build
 dist
 tsconfig.tsbuildinfo
+
+# dependencies
+node_modules/
+
+# bundle
+packages/**/*.d.ts
+packages/**/*.d.ts.map
+packages/**/*.js
+packages/**/*.js.map
+
+# logs
+lerna-debug.log
+npm-debug.log
+yarn-error.log
+**/npm-debug.log
+
+# misc
+.DS_Store
+packages/**/.npmignore
+packages/**/LICENSE

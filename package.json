@@ -10,10 +10,12 @@
   },
   "keywords": [],
   "scripts": {
-    "publish": "lerna publish",
     "bootstrap": "lerna bootstrap",
     "build:prod": "tsc --build tsconfig.json",
-    "clean:prod": "gulp clean:output"
+    "clean:prod": "gulp clean:output",
+    "prepack": "npm run build:prod",
+    "postpublish": "npm run clean:prod",
+    "publish": "lerna publish --no-push"
   },
   "dependencies": {
     "qs": "^6.10.1"
