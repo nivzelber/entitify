@@ -1,7 +1,7 @@
 {
-  "name": "@entitify/core",
-  "version": "0.0.5",
-  "description": "blazing fast API creation (@core)",
+  "name": "@entitify/common",
+  "version": "0.0.4",
+  "description": "blazing fast API creation (@common)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",
   "repository": {
@@ -19,8 +19,5 @@
   },
   "devDependencies": {
     "rimraf": "^3.0.2"
-  },
-  "dependencies": {
-    "qs": "^6.10.1"
   }
 }
