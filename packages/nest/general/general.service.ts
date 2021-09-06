@@ -2,9 +2,9 @@ import { Inject, Injectable, Optional } from "@nestjs/common";
 import { ParsedQs } from "qs";
 import { EntitySchema, getConnection, Repository } from "typeorm";
 
-import { defaultOptions, Options } from "../../common/options";
 import { getWhereConditions } from "../../utils/conditions";
 import { getFields } from "../../utils/decode-entity/get-fields-by-type";
+import { defaultOptions, Options } from "../../utils/options";
 import { BaseEntity } from "../../utils/types/base-entity.type";
 import { FieldNameTypeTuple } from "../../utils/types/field.type";
 
