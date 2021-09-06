@@ -2,6 +2,13 @@
   "name": "entitify",
   "version": "0.0.1",
   "description": "blazing fast API creation",
+  "author": "Niv Zelber",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niv54/entitify"
+  },
+  "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -12,9 +19,9 @@
     "dev:watch": "nodemon",
     "start": "node dist/examples/nest/main.js"
   },
-  "keywords": [],
-  "author": "Niv Zelber",
-  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "qs": "^6.10.1"
+  },
   "devDependencies": {
     "@nestjs/common": "^8.0.4",
     "@nestjs/core": "^8.0.3",
@@ -45,8 +52,5 @@
     "@nestjs/common": "^8.0.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
-  },
-  "dependencies": {
-    "qs": "^6.10.1"
   }
 }
