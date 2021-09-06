@@ -1,0 +1,5 @@
+{
+  "ext": "ts,json",
+  "watch": ["main.ts", "app/", "resources/"],
+  "exec": "npm run dev && npm start"
+}

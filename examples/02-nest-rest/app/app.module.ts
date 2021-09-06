@@ -2,6 +2,8 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Connection } from "typeorm";
 
+import { Address } from "../../models/address.model";
+import { User } from "../../models/user.model";
 import { UserModule } from "../resources/user/user.module";
 
 import { AppController } from "./app.controller";
@@ -16,7 +18,7 @@ import { AppService } from "./app.service";
       database: "entitify",
       username: "Niv54",
       password: "myCoolDbPassword123",
-      entities: ["dist/examples/**/*.model.js"],
+      entities: [User, Address],
       // next values are optional
       synchronize: true,
       logging: true,
