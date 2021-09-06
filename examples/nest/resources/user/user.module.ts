@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { RouterModule } from "nest-router";
 
 import { GeneralController, GeneralService, Tokens } from "../../../../src/nest/";
-import { User } from "../../../user.model";
+import { User } from "../../../00-models/user.model";
 
 @Module({
   imports: [
