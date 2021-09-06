@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { RouterModule } from "nest-router";
 
-import { GeneralController, GeneralService } from "../../../../src/nest/";
+import { GeneralController, GeneralService, Tokens } from "../../../../src/nest/";
 import { User } from "../../../user.model";
 
 @Module({
@@ -15,7 +15,7 @@ import { User } from "../../../user.model";
   ],
   providers: [
     {
-      provide: "entityClass",
+      provide: Tokens.EntityClass,
       useValue: User
     },
     GeneralService

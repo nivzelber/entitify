@@ -1,26 +1,32 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, Optional } from "@nestjs/common";
 import { ParsedQs } from "qs";
 import { EntitySchema, getConnection, Repository } from "typeorm";
 
-import { defaultOptions } from "../../common/options";
+import { defaultOptions, Options } from "../../common/options";
 import { getWhereConditions } from "../../utils/conditions";
 import { getFields } from "../../utils/decode-entity/get-fields-by-type";
 import { BaseEntity } from "../../utils/types/base-entity.type";
 import { FieldNameTypeTuple } from "../../utils/types/field.type";
 
+import { Tokens } from "./constants";
 import { CreateGeneralDto } from "./dto/create-general.dto";
 import { UpdateGeneralDto } from "./dto/update-general.dto";
 
 @Injectable()
 export class GeneralService {
   entityClass: EntitySchema<BaseEntity>;
+  options: Options;
 
   repository: Repository<BaseEntity>;
   name: string;
   fields: FieldNameTypeTuple[];
 
-  constructor(@Inject("entityClass") entityClass: EntitySchema<BaseEntity>) {
+  constructor(
+    @Inject(Tokens.EntityClass) entityClass: EntitySchema<BaseEntity>,
+    @Optional() @Inject(Tokens.Options) options: Options = {}
+  ) {
     this.entityClass = entityClass;
+    this.options = { ...defaultOptions, ...options };
   }
 
   initRepository() {
@@ -59,7 +65,7 @@ export class GeneralService {
     this.initRepository();
     try {
       const {
-        take = defaultOptions.take,
+        take = this.options.take,
         skip = 0,
         paginate = true,
         _and = false,

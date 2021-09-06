@@ -15,7 +15,7 @@ export const route = <
   TUpdateEntity = Partial<TCreateEntity>
 >(
   entityClass: TEntity,
-  options: Options = defaultOptions
+  options: Options = {}
 ) => {
   options = { ...defaultOptions, ...options };
 
