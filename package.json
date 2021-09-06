@@ -15,7 +15,7 @@
     "clean:prod": "gulp clean:output",
     "prepack": "npm run build:prod",
     "postpublish": "npm run clean:prod",
-    "publish": "lerna publish --no-push"
+    "publish": "lerna publish"
   },
   "dependencies": {
     "qs": "^6.10.1"
