@@ -38,7 +38,7 @@ export const route = <
     const { id } = req.params;
     try {
       const entity = await repository.findOneOrFail(id);
-      res.status(200).json(entity);
+      res.status(200).json({ entity });
     } catch (err) {
       const error = new Error(`No ${entityName} found with id: ${id}`);
       error.stack = (err as Error).stack + "/n" + error.stack;

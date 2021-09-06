@@ -37,7 +37,7 @@ export class GeneralService {
     this.initRepository();
     try {
       const count = await this.repository.count({});
-      return count;
+      return { count };
     } catch (error) {
       throw error;
     }
@@ -47,7 +47,7 @@ export class GeneralService {
     this.initRepository();
     try {
       const entity = await this.repository.findOneOrFail(id);
-      return entity;
+      return { entity };
     } catch (err) {
       const error = new Error(`No ${this.name} found with id: ${id}`);
       error.stack = (err as Error).stack + "/n" + error.stack;
@@ -57,31 +57,35 @@ export class GeneralService {
 
   async findByCondition(query: ParsedQs) {
     this.initRepository();
-    const {
-      take = defaultOptions.take,
-      skip = 0,
-      paginate = true,
-      _and = false,
-      _sort_by = "id",
-      _sort_direction = "ASC"
-    } = query;
+    try {
+      const {
+        take = defaultOptions.take,
+        skip = 0,
+        paginate = true,
+        _and = false,
+        _sort_by = "id",
+        _sort_direction = "ASC"
+      } = query;
 
-    const conditions: any = {
-      where: getWhereConditions({
-        query,
-        fields: this.fields,
-        and: _and as boolean
-      }),
-      order: { [_sort_by as string]: (_sort_direction as string).toUpperCase() }
-    };
+      const conditions: any = {
+        where: getWhereConditions({
+          query,
+          fields: this.fields,
+          and: _and as boolean
+        }),
+        order: { [_sort_by as string]: (_sort_direction as string).toUpperCase() }
+      };
 
-    if (paginate) {
-      conditions.take = take;
-      conditions.skip = skip;
+      if (paginate) {
+        conditions.take = take;
+        conditions.skip = skip;
+      }
+
+      const [entities, total] = await this.repository.findAndCount(conditions);
+      return { entities, total };
+    } catch (error) {
+      throw error;
     }
-
-    const [entities, total] = await this.repository.findAndCount(conditions);
-    return { entities, total };
   }
 
   async create(entity: CreateGeneralDto<BaseEntity>["entity"]) {
@@ -89,7 +93,7 @@ export class GeneralService {
     try {
       const createdEntity = this.repository.create(entity);
       const entityFromDB = await this.repository.save(createdEntity);
-      return entityFromDB;
+      return { entity: entityFromDB };
     } catch (error) {
       throw error;
     }
@@ -104,7 +108,7 @@ export class GeneralService {
         ...partialEntity
       };
       const entityFromDB = await this.repository.save(entity);
-      return entityFromDB;
+      return { entity: entityFromDB };
     } catch (err) {
       const error = new Error(`No ${this.name} found with id: ${id}`);
       error.stack = (err as Error).stack + "/n" + error.stack;
