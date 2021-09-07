@@ -3,8 +3,8 @@ import cors from "cors";
 import express from "express";
 import { ConnectionOptions, createConnection } from "typeorm";
 
-import { Address } from "../../models/address.model";
-import { User } from "../../models/user.model";
+import { Address } from "./models/address.model";
+import { User } from "./models/user.model";
 
 const start = async () => {
   const connectionOptions: ConnectionOptions = {
