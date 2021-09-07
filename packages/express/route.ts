@@ -2,6 +2,7 @@ import { defaultOptions, Options } from "@entitify/common";
 import { BaseEntity, getFields, getWhereConditions, parseQuery } from "@entitify/core";
 import { Request, Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
+import { EmptyObject } from "types/empty-object.type";
 
 import { getQueryString } from "./get-query-string";
 
@@ -76,32 +77,38 @@ export const route = <
     }
   });
 
-  router.post("/", async (req: Request<{}, {}, { entity: TCreateEntity }>, res) => {
-    try {
-      const entity = repository.create(req.body.entity);
-      const entityFromDB = await repository.save(entity);
-      res.status(200).json({ entity: entityFromDB });
-    } catch (error) {
-      throw error;
+  router.post(
+    "/",
+    async (req: Request<EmptyObject, EmptyObject, { entity: TCreateEntity }>, res) => {
+      try {
+        const entity = repository.create(req.body.entity);
+        const entityFromDB = await repository.save(entity);
+        res.status(200).json({ entity: entityFromDB });
+      } catch (error) {
+        throw error;
+      }
     }
-  });
+  );
 
-  router.patch("/:id", async (req: Request<{ id: number }, {}, { entity: TUpdateEntity }>, res) => {
-    const { id } = req.params;
-    try {
-      let entity = await repository.findOneOrFail(id);
-      entity = {
-        ...entity,
-        ...req.body.entity
-      };
-      const entityFromDB = await repository.save(entity);
-      res.status(200).json({ entity: entityFromDB });
-    } catch (err) {
-      const error = new Error(`No ${entityName} found with id: ${id}`);
-      error.stack = (err as Error).stack + "/n" + error.stack;
-      throw error;
+  router.patch(
+    "/:id",
+    async (req: Request<{ id: number }, EmptyObject, { entity: TUpdateEntity }>, res) => {
+      const { id } = req.params;
+      try {
+        let entity = await repository.findOneOrFail(id);
+        entity = {
+          ...entity,
+          ...req.body.entity
+        };
+        const entityFromDB = await repository.save(entity);
+        res.status(200).json({ entity: entityFromDB });
+      } catch (err) {
+        const error = new Error(`No ${entityName} found with id: ${id}`);
+        error.stack = (err as Error).stack + "/n" + error.stack;
+        throw error;
+      }
     }
-  });
+  );
 
   router.delete("/:id", async (req, res) => {
     const { id } = req.params;

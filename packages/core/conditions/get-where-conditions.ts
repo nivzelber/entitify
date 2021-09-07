@@ -20,7 +20,7 @@ export interface GetWhereConditionsProps {
 }
 
 export const getWhereConditions = ({ query, fields, and = false }: GetWhereConditionsProps) => {
-  let conditions: Record<string, FindOperator<any>>[] = [];
+  const conditions: Record<string, FindOperator<any>>[] = [];
 
   const generalConditions = getGeneralConditions(fields.map(getName), query);
   conditions.push(...generalConditions); // using concat does not work here
