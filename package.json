@@ -15,7 +15,9 @@
     "clean:prod": "gulp clean:output",
     "prepack": "npm run build:prod",
     "postpublish": "npm run clean:prod",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "format": "prettier \"**/*.ts\" --ignore-path ./.prettierignore --write && git status",
+    "lint:packages": "eslint 'packages/**/**.ts'"
   },
   "dependencies": {
     "qs": "^6.10.1"
@@ -32,6 +34,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
+    "express": "^4.17.1",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "husky": "^7.0.2",
