@@ -27,10 +27,18 @@
     "@nestjs/testing": "^8.0.6",
     "@types/jest": "^26.0.24",
     "@types/qs": "^6.9.7",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
+    "husky": "^7.0.2",
     "lerna": "^4.0.0",
+    "lint-staged": "^11.1.2",
     "nodemon": "^2.0.7",
+    "prettier": "^2.3.2",
     "typeorm": "^0.2.34",
     "typescript": "^4.4.2"
   }
