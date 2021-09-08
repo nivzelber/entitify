@@ -21,6 +21,9 @@ npm-debug.log
 yarn-error.log
 **/npm-debug.log
 
+# cache
+.eslintcache
+
 # misc
 .DS_Store
 packages/**/.npmignore
