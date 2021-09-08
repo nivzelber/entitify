@@ -2,9 +2,9 @@ import { defaultOptions, Options } from "@entitify/common";
 import { BaseEntity, getFields, getWhereConditions, parseQuery } from "@entitify/core";
 import { Request, Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
-import { EmptyObject } from "types/empty-object.type";
 
 import { getQueryString } from "./get-query-string";
+import { EmptyObject } from "./types/empty-object.type";
 
 export const route = <
   TEntity extends EntityTarget<BaseEntity>,
