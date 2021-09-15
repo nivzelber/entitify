@@ -79,7 +79,7 @@ export const route = <
 
   router.post(
     "/",
-    async (req: Request<EmptyObject, EmptyObject, { entity: TCreateEntity }>, res) => {
+    async (req: Request<EmptyObject, { entity: BaseEntity }, { entity: TCreateEntity }>, res) => {
       try {
         const entity = repository.create(req.body.entity);
         const entityFromDB = await repository.save(entity);
@@ -92,7 +92,10 @@ export const route = <
 
   router.patch(
     "/:id",
-    async (req: Request<{ id: number }, EmptyObject, { entity: TUpdateEntity }>, res) => {
+    async (
+      req: Request<{ id: number }, { entity: BaseEntity }, { entity: TUpdateEntity }>,
+      res
+    ) => {
       const { id } = req.params;
       try {
         let entity = await repository.findOneOrFail(id);
