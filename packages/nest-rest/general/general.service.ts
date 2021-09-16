@@ -64,6 +64,7 @@ export class GeneralService {
     this.initRepository();
     try {
       const {
+        // TODO: change take and skip to _take and _skip, both here and in express
         take = this.options.take,
         skip = 0,
         paginate = true,
