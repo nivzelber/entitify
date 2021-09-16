@@ -66,10 +66,10 @@ export class GeneralService {
       const {
         _take = this.options.take,
         _skip = 0,
-        paginate = true,
+        paginate = this.options.paginate,
         _and = false,
-        _sort_by = "id",
-        _sort_direction = "ASC"
+        _sort_by = this.options.sortBy,
+        _sort_direction = this.options.sortDirection
       } = query;
 
       const conditions: any = {

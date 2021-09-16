@@ -50,10 +50,10 @@ export const route = <
       const {
         _take = options.take,
         _skip = 0,
-        paginate = true,
+        paginate = options.paginate,
         _and = false,
-        _sort_by = "id",
-        _sort_direction = "ASC"
+        _sort_by = options.sortBy,
+        _sort_direction = options.sortDirection
       } = parseQuery(queryString);
 
       const conditions: any = {
