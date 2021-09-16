@@ -1,15 +1,15 @@
 import { BaseEntity } from "@entitify/core";
 
 export interface Options<T = BaseEntity> {
-  take?: number;
   sortBy?: keyof T;
   sortDirection?: "ASC" | "DESC";
   paginate?: boolean;
+  take?: number;
 }
 
 export const defaultOptions: Options = {
-  take: 50,
   sortBy: "id",
+  paginate: true,
   sortDirection: "ASC",
-  paginate: true
+  take: 50
 };
