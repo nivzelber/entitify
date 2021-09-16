@@ -327,9 +327,9 @@ entitify supports pagination by default.
 entitify has some defaults that can be changed by passing an object of type `Options` (that is exported from `@entitify/common`)
 | Option        | Default Value | Description                                   | Implementation status |
 | ------------- | ------------- | --------------------------------------------- | --------------------- |
-| sortBy        | `id`          | Fields that entities returned will by sort by | ❌                     |
-| sortDirection | `ASC`         | Order by direction (`"ASC"` or `"DSC"`)       | ❌                     |
-| paginate      | `true`        | Should results paginate                       | ❌                     |
+| sortBy        | `id`          | Fields that entities returned will by sort by | ✅                     |
+| sortDirection | `ASC`         | Order by direction (`"ASC"` or `"DSC"`)       | ✅                     |
+| paginate      | `true`        | Should results paginate                       | ✅                     |
 | take          | `50`          | How many entities to will be returned         | ✅                     |
 
 > All options are overridable from the query
