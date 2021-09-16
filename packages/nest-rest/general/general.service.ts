@@ -64,9 +64,8 @@ export class GeneralService {
     this.initRepository();
     try {
       const {
-        // TODO: change take and skip to _take and _skip, both here and in express
-        take = this.options.take,
-        skip = 0,
+        _take = this.options.take,
+        _skip = 0,
         paginate = true,
         _and = false,
         _sort_by = "id",
@@ -83,8 +82,8 @@ export class GeneralService {
       };
 
       if (paginate) {
-        conditions.take = take;
-        conditions.skip = skip;
+        conditions.take = _take;
+        conditions.skip = _skip;
       }
 
       const [entities, total] = await this.repository.findAndCount(conditions);

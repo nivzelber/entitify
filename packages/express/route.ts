@@ -48,8 +48,8 @@ export const route = <
       const queryString = getQueryString(req.url);
 
       const {
-        take = options.take,
-        skip = 0,
+        _take = options.take,
+        _skip = 0,
         paginate = true,
         _and = false,
         _sort_by = "id",
@@ -66,8 +66,8 @@ export const route = <
       };
 
       if (paginate) {
-        conditions.take = take;
-        conditions.skip = skip;
+        conditions.take = _take;
+        conditions.skip = _skip;
       }
 
       const [entities, total] = await repository.findAndCount(conditions);
