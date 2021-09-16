@@ -168,14 +168,14 @@ This is probably the best and most powerful route entitify exposes.
 - `GET`
 - returns
 
-```json
+```
 {
   "entities": [
     { [entity fields] },
     { [entity fields] },
     ...
   ],
-  "total": [ total number of entities that matches the specified conditions ]
+  "total": [total number of entities that matches the specified conditions]
 }
 ```
 
@@ -188,7 +188,7 @@ Read more in the [Api Parameters section](#parameters)
 - `GET /:id`
 - returns
 
-```json
+```
 {
   "entity": { [entity fields] }
 }
@@ -199,7 +199,7 @@ Read more in the [Api Parameters section](#parameters)
 - `GET /count`
 - returns
 
-```json
+```
 {
   "count": [number of entities]
 }
@@ -210,7 +210,7 @@ Read more in the [Api Parameters section](#parameters)
 - `POST /`
 - body
 
-```json
+```
 {
   "entity": { [entity fields] }
 }
@@ -218,7 +218,7 @@ Read more in the [Api Parameters section](#parameters)
 
 - returns
 
-```json
+```
 {
   "entity": { [created entity fields] }
 }
@@ -229,15 +229,15 @@ Read more in the [Api Parameters section](#parameters)
 - `PATCH /:id`
 - body
 
-```json
+```
 {
-  "entity": { [entity fields] }
+  "entity": { [partial entity fields] }
 }
 ```
 
 - returns
 
-```json
+```
 {
   "entity": { [updated entity fields] }
 }
