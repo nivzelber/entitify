@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@entitify/common": ["packages/common"],
+      "@entitify/core": ["packages/core"],
+      "@entitify/express": ["packages/express"],
+      "@entitify/nest-rest": ["packages/nest-rest"]
+    }
+  }
+}
