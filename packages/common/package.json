@@ -1,6 +1,6 @@
 {
   "name": "@entitify/common",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "blazing fast API creation (@common)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",
@@ -12,6 +12,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@entitify/core": "0.0.10"
+    "@entitify/core": "^0.1.0"
   }
 }
