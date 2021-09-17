@@ -55,7 +55,7 @@ Poor adam then went on to do the following (again 🤦‍♂️):
 Adam was so happy of his work. He now has the perfect API for his entity and there is nothing that can stop him 😎  
 Adam woke up the next day, and wanted to add a new entity to his API 💪  
 Adam then discoverd he needs to re-implement all the stuff he's done for the first entity **ALL OVER AGAIN**.  
-Adam then decided to quit development, and switch for a funky carear path for the `REST` his life 👨‍🎤 (pun intended).
+Adam then decided to quit development, and switch for a funky career path for the `REST` his life 👨‍🎤 (pun intended).
 
 ## Goal
 
