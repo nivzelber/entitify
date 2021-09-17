@@ -8,7 +8,7 @@
 ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)  
 
 
-Create API's at lightning speed, without any work at all.
+Create API's at lightning speed, with no work at all.
 
 - [Entitify](#entitify)
   - [Description](#description)
@@ -37,7 +37,7 @@ Create API's at lightning speed, without any work at all.
 
 This is the story of Adam 🧔  
 Adam wanted to add a new entity to his existing API.  
-Adam then went to do the following:
+Adam then went on to do the following:
 
 - Create a DB model for his entity
 - Add a `CREATE` route for his entity
@@ -45,7 +45,7 @@ Adam then went to do the following:
 - Add a `DELETE` route for his entity
 - Add a `GET` route for his entity
 
-Then adam realized he didn't only want to GET his entity by ID, but by other fields as well.  
+Then adam realized he didn't only want to `GET` his entity by ID, but by other fields as well.  
 Poor adam then went on to do the following (again 🤦‍♂️):
 
 - Add a `SEARCH` route for his entity so he can search it by other fields but ID
@@ -55,7 +55,7 @@ Poor adam then went on to do the following (again 🤦‍♂️):
 Adam was so happy of his work. He now has the perfect API for his entity and there is nothing that can stop him 😎  
 Adam woke up the next day, and wanted to add a new entity to his API 💪  
 Adam then discoverd he needs to re-implement all the stuff he's done for the first entity **ALL OVER AGAIN**.  
-Adam then realized he is not interested in development, and went on to sell ice cream for the `REST` his life (pun intended).
+Adam then decided to quit development, and switch for a funky carear path for the `REST` his life 👨‍🎤 (pun intended).
 
 ## Goal
 
@@ -278,7 +278,7 @@ Filters are used as a suffix to a field's name.
 ##### Examples
 
 **Get all users with first name Adam**  
-`GET /users?firsName=adam` or `GET /users?firsName_eq=adam`
+`GET /users?firsName=Adam` or `GET /users?firsName_eq=Adam`
 
 **Get all users with age lower than or equal to 25**  
 `GET /users?age_lte=25`
@@ -296,7 +296,7 @@ you can specify the `_and` condition to make the same query above return all use
 
 Sort entities by a specific field, and direction
 
-> The default field entities are sore by is `id`, and the default direction is `ASC`.  
+> The default field entities are sorted by is `id`, and the default direction is ascending.  
 > To change the defaults per entity, see [Options](#options)
 
 ##### Examples
@@ -305,7 +305,7 @@ Sort entities by a specific field, and direction
 `GET /users?_sort_by=age`
 
 **Get users sorted by name descending**  
-`GET /users?_sort_by=name&_sort_direction=DSC`
+`GET /users?_sort_by=name&_sort_direction=DESC`
 
 #### Paginate
 
@@ -328,7 +328,7 @@ entitify has some defaults that can be changed by passing an object of type `Opt
 | Option        | Default Value | Description                                   | Implementation status |
 | ------------- | ------------- | --------------------------------------------- | --------------------- |
 | sortBy        | `id`          | Fields that entities returned will by sort by | ✅                     |
-| sortDirection | `ASC`         | Order by direction (`"ASC"` or `"DSC"`)       | ✅                     |
+| sortDirection | `ASC`         | Order by direction (`"ASC"` or `"DESC"`)       | ✅                     |
 | paginate      | `true`        | Should results paginate                       | ✅                     |
 | take          | `50`          | How many entities to will be returned         | ✅                     |
 
