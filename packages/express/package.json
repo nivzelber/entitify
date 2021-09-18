@@ -16,8 +16,8 @@
     "@entitify/core": "^0.1.0"
   },
   "peerDependencies": {
-    "@entitify/common": "0.0.8",
-    "@entitify/core": "0.0.8",
+    "@entitify/common": "^0.1.0",
+    "@entitify/core": "^0.1.0",
     "express": "^4.17.1",
     "typeorm": "^0.2.37"
   }

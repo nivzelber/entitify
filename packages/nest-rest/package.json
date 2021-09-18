@@ -16,8 +16,8 @@
     "@entitify/core": "^0.1.0"
   },
   "peerDependencies": {
-    "@entitify/common": "0.0.8",
-    "@entitify/core": "0.0.8",
+    "@entitify/common": "^0.1.0",
+    "@entitify/core": "^0.1.0",
     "@nestjs/common": "^8.0.6",
     "@nestjs/mapped-types": "*",
     "@nestjs/testing": "^8.0.6"
