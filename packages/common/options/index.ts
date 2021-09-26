@@ -1,4 +1,4 @@
-import { BaseEntity } from "../types/";
+import { BaseEntity } from "../types";
 
 export interface Options<T = BaseEntity> {
   sortBy?: keyof T;
