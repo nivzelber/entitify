@@ -1,5 +1,5 @@
-import { defaultOptions, Options } from "@entitify/common";
-import { BaseEntity, FieldNameTypeTuple, getFields, getWhereConditions } from "@entitify/core";
+import { BaseEntity, defaultOptions, Options } from "@entitify/common";
+import { FieldNameTypeTuple, getFields, getWhereConditions } from "@entitify/core";
 import { Inject, Injectable, Optional } from "@nestjs/common";
 import { ParsedQs } from "qs";
 import { EntitySchema, getConnection, Repository } from "typeorm";

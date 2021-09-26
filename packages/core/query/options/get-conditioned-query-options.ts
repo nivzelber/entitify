@@ -1,8 +1,8 @@
-import { Options } from "@entitify/common";
+import { BaseEntity, Options } from "@entitify/common";
 import { FindConditions, FindManyOptions } from "typeorm";
 import { EntityFieldsNames } from "typeorm/common/EntityFieldsNames";
 
-import { BaseEntity, FieldNameTypeTuple } from "../../types";
+import { FieldNameTypeTuple } from "../../types";
 import { parseQuery } from "../../utils";
 import { getWhereConditions } from "../conditions";
 

@@ -1,7 +1,7 @@
+import { BaseEntity } from "@entitify/common";
 import { ParsedQs } from "qs";
 import { FindConditions } from "typeorm";
 
-import { BaseEntity } from "../../types";
 import { Field, FieldNameTypeTuple } from "../../types/field.type";
 import { pluck } from "../../utils/pluck";
 

@@ -1,4 +1,4 @@
-import { BaseEntity } from "@entitify/core";
+import { BaseEntity } from "@entitify/common";
 import { PartialType } from "@nestjs/mapped-types";
 
 import { CreateGeneralDto } from "./create-general.dto";

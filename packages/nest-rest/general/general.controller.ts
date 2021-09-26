@@ -1,4 +1,5 @@
-import { BaseEntity, parseQuery } from "@entitify/core";
+import { BaseEntity } from "@entitify/common";
+import { parseQuery } from "@entitify/core";
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
 
 import { CreateGeneralDto } from "./dto/create-general.dto";

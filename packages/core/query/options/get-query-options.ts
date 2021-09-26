@@ -1,7 +1,6 @@
-import { Options } from "@entitify/common";
+import { BaseEntity, Options } from "@entitify/common";
 import { FindManyOptions, FindOneOptions } from "typeorm";
 
-import { BaseEntity } from "../../types";
 import { OneOrMany } from "../../types/one-or-may.type";
 
 export interface GetQueryOptionsProps<T extends BaseEntity> {

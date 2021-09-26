@@ -1,5 +1,5 @@
-import { defaultOptions, Options } from "@entitify/common";
-import { BaseEntity, getFields, getWhereConditions, parseQuery } from "@entitify/core";
+import { BaseEntity, defaultOptions, Options } from "@entitify/common";
+import { getFields, getWhereConditions, parseQuery } from "@entitify/core";
 import { Request, Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
