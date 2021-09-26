@@ -1,5 +1,5 @@
 import { BaseEntity, defaultOptions, Options } from "@entitify/common";
-import { getFields, getWhereConditions, parseQuery } from "@entitify/core";
+import { getConditionedQueryOptions, getFields, getQueryOptions } from "@entitify/core";
 import { Request, Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
@@ -13,7 +13,7 @@ export const route = <
 >(
   entityClass: TEntity,
   options: Options = {}
-) => {
+): Router => {
   options = { ...defaultOptions, ...options };
 
   const { name: entityName, ownColumns } = getConnection().getMetadata(entityClass);
@@ -24,7 +24,8 @@ export const route = <
 
   router.get("/count", async (_req, res) => {
     try {
-      const count = await repository.count({});
+      const queryOptions = getQueryOptions<"many">({ options });
+      const count = await repository.count(queryOptions);
       res.status(200).json({ count });
     } catch (error) {
       throw error;
@@ -33,8 +34,9 @@ export const route = <
 
   router.get("/:id", async (req, res) => {
     const { id } = req.params;
+    const queryOptions = getQueryOptions<"one">({ options });
     try {
-      const entity = await repository.findOneOrFail(id);
+      const entity = await repository.findOneOrFail(id, queryOptions);
       res.status(200).json({ entity });
     } catch (err) {
       const error = new Error(`No ${entityName} found with id: ${id}`);
@@ -46,31 +48,9 @@ export const route = <
   router.get("/", async (req, res) => {
     try {
       const queryString = getQueryString(req.url);
+      const queryOptions = getConditionedQueryOptions({ queryString, options, fields });
 
-      const {
-        _take = options.take,
-        _skip = 0,
-        paginate = options.paginate,
-        _and = false,
-        _sort_by = options.sortBy,
-        _sort_direction = options.sortDirection
-      } = parseQuery(queryString);
-
-      const conditions: any = {
-        where: getWhereConditions({
-          query: req.query,
-          fields,
-          and: _and as boolean
-        }),
-        order: { [_sort_by as string]: (_sort_direction as string).toUpperCase() }
-      };
-
-      if (paginate) {
-        conditions.take = _take;
-        conditions.skip = _skip;
-      }
-
-      const [entities, total] = await repository.findAndCount(conditions);
+      const [entities, total] = await repository.findAndCount(queryOptions);
       res.status(200).json({ entities, total });
     } catch (error) {
       throw error;

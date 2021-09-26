@@ -5,7 +5,7 @@ import { OneOrMany } from "../../types/one-or-may.type";
 
 export interface GetQueryOptionsProps<T extends BaseEntity> {
   options: Options;
-  initialQueryOptions: FindOneOptions<T> | FindManyOptions<T>;
+  initialQueryOptions?: FindOneOptions<T> | FindManyOptions<T>;
 }
 
 type OneOrManyQueryOptions<
