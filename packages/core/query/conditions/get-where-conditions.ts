@@ -1,8 +1,9 @@
 import { ParsedQs } from "qs";
-import { FindOperator } from "typeorm";
+import { FindConditions } from "typeorm";
 
-import { Field, FieldNameTypeTuple } from "../types/field.type";
-import { pluck } from "../utils/pluck";
+import { BaseEntity } from "../../types";
+import { Field, FieldNameTypeTuple } from "../../types/field.type";
+import { pluck } from "../../utils/pluck";
 
 import {
   getGeneralConditions,
@@ -20,7 +21,7 @@ export interface GetWhereConditionsProps {
 }
 
 export const getWhereConditions = ({ query, fields, and = false }: GetWhereConditionsProps) => {
-  const conditions: Record<string, FindOperator<any>>[] = [];
+  const conditions: FindConditions<BaseEntity>[] = [];
 
   const generalConditions = getGeneralConditions(fields.map(getName), query);
   conditions.push(...generalConditions); // using concat does not work here
