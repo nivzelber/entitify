@@ -5,6 +5,7 @@ export interface Options<T = BaseEntity> {
   sortDirection?: "ASC" | "DESC";
   paginate?: boolean;
   take?: number;
+  cache?: number;
 }
 
 export const defaultOptions: Options = {
