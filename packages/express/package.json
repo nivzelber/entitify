@@ -1,6 +1,6 @@
 {
   "name": "@entitify/express",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "blazing fast API creation (@express)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",

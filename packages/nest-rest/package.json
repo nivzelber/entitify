@@ -1,6 +1,6 @@
 {
   "name": "@entitify/nest-rest",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "blazing fast API creation (@nest-rest)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",
