@@ -32,8 +32,8 @@ const start = async () => {
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
 
-  const userRouter = route(User);
-  app.use("/api/user", userRouter, { cache: 3000 });
+  const userRouter = route(User, { cache: 3000 });
+  app.use("/api/user", userRouter);
 
   app.listen(3000, () => console.log("App in running"));
 };

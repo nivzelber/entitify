@@ -12,9 +12,9 @@
   "author": "Niv Zelber",
   "license": "ISC",
   "dependencies": {
-    "@entitify/common": "0.0.9",
-    "@entitify/core": "0.0.9",
-    "@entitify/nest-rest": "0.0.9",
+    "@entitify/common": "0.1.1",
+    "@entitify/core": "0.1.1",
+    "@entitify/nest-rest": "0.1.1",
     "@nestjs/common": "^8.0.7",
     "@nestjs/core": "^8.0.7",
     "@nestjs/mapped-types": "^1.0.0",

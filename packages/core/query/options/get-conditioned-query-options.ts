@@ -9,6 +9,7 @@ import { getWhereConditions } from "../conditions";
 import { getQueryOptions } from "./get-query-options";
 
 type FindOptionsOrder<TEntity> = {
+  // TODO: change the value here to Options["sortDirection"]
   [P in EntityFieldsNames<TEntity>]?: "ASC" | "DESC" | 1 | -1;
 };
 
