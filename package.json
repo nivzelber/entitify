@@ -9,16 +9,16 @@
     "pre-commit": "lint-staged",
     "pre-push": "npm run lint:packages",
     "bootstrap": "lerna bootstrap",
-    "build:prod": "tsc --build tsconfig.json",
-    "clean:prod": "gulp clean:output",
-    "syncpack": "syncpack",
     "prepare": "husky install",
     "prepack": "npm run build:prod",
     "postpublish": "npm run clean:prod",
-    "publish": "lerna publish --exact",
     "format": "prettier \"**/*.ts\" --ignore-path ./.prettierignore --write && git status",
     "lint:packages": "eslint --no-error-on-unmatched-pattern --cache 'packages/**/**.ts'",
-    "type-check": "tsc --noEmit"
+    "build:prod": "tsc --build tsconfig.json",
+    "clean:prod": "gulp clean:output",
+    "syncpack": "syncpack",
+    "type-check": "tsc --noEmit",
+    "publish": "lerna publish --exact"
   },
   "dependencies": {
     "qs": "^6.10.1"
