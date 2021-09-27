@@ -1,3 +1,4 @@
 #!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-node -e "require(\"lint-staged\")()"
+npm run pre-commit

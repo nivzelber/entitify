@@ -9,6 +9,8 @@
     "url": "https://github.com/niv54/entitify"
   },
   "scripts": {
+    "pre-commit": "npm run lint:staged",
+    "pre-push": "npm run lint:packages",
     "bootstrap": "lerna bootstrap",
     "build:prod": "tsc --build tsconfig.json",
     "clean:prod": "gulp clean:output",
@@ -17,6 +19,7 @@
     "postpublish": "npm run clean:prod",
     "publish": "lerna publish",
     "format": "prettier \"**/*.ts\" --ignore-path ./.prettierignore --write && git status",
+    "lint:staged": "lint-staged",
     "lint:packages": "eslint --no-error-on-unmatched-pattern --cache 'packages/**/**.ts'",
     "type-check": "tsc --noEmit"
   },
