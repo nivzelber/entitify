@@ -1,9 +1,13 @@
 import { BaseEntity, defaultOptions, Options } from "@entitify/common";
-import { getConditionedQueryOptions, getFields, getQueryOptions } from "@entitify/core";
+import {
+  getConditionedQueryOptions,
+  getFields,
+  getQueryOptions,
+  getQueryStringFromURL
+} from "@entitify/core";
 import { Request, Router } from "express";
 import { EntityTarget, getConnection, getRepository } from "typeorm";
 
-import { getQueryString } from "./get-query-string";
 import { EmptyObject } from "./types/empty-object.type";
 
 export const route = <
@@ -24,7 +28,7 @@ export const route = <
 
   router.get("/count", async (req, res) => {
     try {
-      const queryString = getQueryString(req.url);
+      const queryString = getQueryStringFromURL(req.url);
       const queryOptions = getConditionedQueryOptions({ queryString, options, fields });
       const count = await repository.count(queryOptions);
       res.status(200).json({ count });
@@ -48,7 +52,7 @@ export const route = <
 
   router.get("/", async (req, res) => {
     try {
-      const queryString = getQueryString(req.url);
+      const queryString = getQueryStringFromURL(req.url);
       const queryOptions = getConditionedQueryOptions({ queryString, options, fields });
 
       const [entities, total] = await repository.findAndCount(queryOptions);
