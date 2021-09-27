@@ -9,14 +9,16 @@
     "access": "public"
   },
   "devDependencies": {
-    "@entitify/common": "^0.1.1",
-    "@entitify/core": "^0.1.1"
+    "@entitify/common": "0.1.1",
+    "@entitify/core": "^0.1.1",
+    "@nestjs/typeorm": "^8.0.2"
   },
   "peerDependencies": {
-    "@entitify/common": "^0.1.1",
+    "@entitify/common": "0.1.1",
     "@entitify/core": "^0.1.1",
     "@nestjs/common": "^8.0.6",
     "@nestjs/mapped-types": "*",
-    "@nestjs/testing": "^8.0.6"
+    "@nestjs/testing": "^8.0.6",
+    "@nestjs/typeorm": "^8.0.2"
   }
 }

@@ -9,11 +9,11 @@
     "access": "public"
   },
   "devDependencies": {
-    "@entitify/common": "^0.1.1",
+    "@entitify/common": "0.1.1",
     "@entitify/core": "^0.1.1"
   },
   "peerDependencies": {
-    "@entitify/common": "^0.1.1",
+    "@entitify/common": "0.1.1",
     "@entitify/core": "^0.1.1",
     "express": "^4.17.1",
     "typeorm": "^0.2.37"

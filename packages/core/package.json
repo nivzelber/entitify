@@ -12,9 +12,9 @@
     "qs": "^6.10.1"
   },
   "devDependencies": {
-    "@entitify/common": "^0.1.1"
+    "@entitify/common": "0.1.1"
   },
   "peerDependencies": {
-    "@entitify/common": "^0.1.1"
+    "@entitify/common": "0.1.1"
   }
 }

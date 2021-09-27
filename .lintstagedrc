@@ -2,5 +2,5 @@
   "packages/**/*.{ts,json}": [
     "prettier --ignore-path ./.prettierignore --write"
   ],
-  "(package.json|packages/*/package.json)": ["syncpack format", "git add ."]
+  "(package.json|packages/*/package.json)": ["syncpack format","syncpack fix-mismatches", "git add ."]
 }
