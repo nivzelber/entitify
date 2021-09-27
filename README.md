@@ -325,11 +325,15 @@ entitify supports pagination by default.
 ## Options
 
 entitify has some defaults that can be changed by passing an object of type `Options` (that is exported from `@entitify/common`)
-| Option        | Default Value | Description                                   | Implementation status |
-| ------------- | ------------- | --------------------------------------------- | --------------------- |
-| sortBy        | `id`          | Fields that entities returned will by sort by | ✅                     |
-| sortDirection | `ASC`         | Order by direction (`"ASC"` or `"DESC"`)       | ✅                     |
-| paginate      | `true`        | Should results paginate                       | ✅                     |
-| take          | `50`          | How many entities to will be returned         | ✅                     |
+| Option        | Default Value | Description                                              | Implementation status |
+| ------------- | ------------- | -------------------------------------------------------- | --------------------- |
+| sortBy        | `id`          | Fields that entities returned will by sort by            | ✅                     |
+| sortDirection | `ASC`         | Order by direction (`"ASC"` or `"DESC"`)                 | ✅                     |
+| paginate      | `true`        | Should results paginate                                  | ✅                     |
+| take          | `50`          | How many entities to will be returned                    | ✅                     |
+| cache         | `null`        | If defined, sets query caching timeout (in milliseconds) | ✅                     |
 
 > All options are overridable from the query
+
+> A note regarding `cache` - you have to set the `cache` in `typeorm`'s config  
+> The easiest way to do it is to set `cache: true` (as shown in examples), but `typeorm` offers a lot more options
