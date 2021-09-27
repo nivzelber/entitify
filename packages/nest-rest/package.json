@@ -1,6 +1,6 @@
 {
   "name": "@entitify/nest-rest",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "blazing fast API creation (@nest-rest)",
   "author": "Niv Zelber",
   "license": "GPL-3.0-or-later",
@@ -9,13 +9,13 @@
     "access": "public"
   },
   "devDependencies": {
-    "@entitify/common": "0.1.1",
-    "@entitify/core": "^0.1.1",
+    "@entitify/common": "0.1.2",
+    "@entitify/core": "0.1.2",
     "@nestjs/typeorm": "^8.0.2"
   },
   "peerDependencies": {
-    "@entitify/common": "0.1.1",
-    "@entitify/core": "^0.1.1",
+    "@entitify/common": "0.1.2",
+    "@entitify/core": "0.1.2",
     "@nestjs/common": "^8.0.6",
     "@nestjs/mapped-types": "*",
     "@nestjs/testing": "^8.0.6",
