@@ -21,7 +21,9 @@ const start = async () => {
     logger: "advanced-console",
     options: {
       encrypt: false
-    }
+    },
+    // set this to enable cache
+    cache: true
   };
   await createConnection(connectionOptions);
 
@@ -31,7 +33,7 @@ const start = async () => {
   app.use(express.urlencoded({ extended: true }));
 
   const userRouter = route(User);
-  app.use("/api/user", userRouter);
+  app.use("/api/user", userRouter, { cache: 3000 });
 
   app.listen(3000, () => console.log("App in running"));
 };

@@ -25,7 +25,9 @@ import { AppService } from "./app.service";
       logger: "advanced-console",
       options: {
         encrypt: false
-      }
+      },
+      // set this to enable cache
+      cache: true
     }),
     UserModule
   ],

@@ -18,6 +18,10 @@ import { User } from "./user.model";
       provide: Tokens.EntityClass,
       useValue: User
     },
+    {
+      provide: Tokens.Options,
+      useValue: { cache: 3000 }
+    },
     GeneralService
   ],
   controllers: [GeneralController]
