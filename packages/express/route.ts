@@ -22,9 +22,10 @@ export const route = <
   const router = Router();
   const repository = getRepository(entityClass);
 
-  router.get("/count", async (_req, res) => {
+  router.get("/count", async (req, res) => {
     try {
-      const queryOptions = getQueryOptions<"many">({ options });
+      const queryString = getQueryString(req.url);
+      const queryOptions = getConditionedQueryOptions({ queryString, options, fields });
       const count = await repository.count(queryOptions);
       res.status(200).json({ count });
     } catch (error) {
