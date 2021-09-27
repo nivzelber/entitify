@@ -19,7 +19,7 @@
     "postpublish": "npm run clean:prod",
     "publish": "lerna publish",
     "format": "prettier \"**/*.ts\" --ignore-path ./.prettierignore --write && git status",
-    "lint:staged": "lint-staged",
+    "lint:staged": "node -e \"require('lint-staged')()\"",
     "lint:packages": "eslint --no-error-on-unmatched-pattern --cache 'packages/**/**.ts'",
     "type-check": "tsc --noEmit"
   },
