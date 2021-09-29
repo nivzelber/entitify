@@ -8,7 +8,7 @@
 ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)  
 
 
-Create API's at lightning speed, with no work at all.
+Create APIs at lightning speed, with no work at all.
 
 - [Entitify](#entitify)
   - [Description](#description)
